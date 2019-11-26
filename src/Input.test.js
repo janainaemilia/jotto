@@ -12,8 +12,10 @@ import Input from './Input'
  */
 const setup = (initialState = {}) => {
     const store = storeFactory(initialState)
+    // We use .dive() to get the low leval html element in a component
     const wrapper = shallow(<Input store={store} />).dive().dive()
     return wrapper
+    // Just to check what is returning in wrapper
     // console.log(wrapper.debug())
 }
 
@@ -40,14 +42,24 @@ describe('render', () => {
         })
     })
     describe('word has been guessed', () => {
-        test('renders component without error', () => {
+        let wrapper
 
+        beforeEach(() => {
+            const initialState = { success: true}
+            wrapper = setup(initialState)
+        })
+
+        test('renders component without error', () => {
+            const component = findByTestAttr(wrapper, 'component-input')
+            expect(component.length).toBe(1)
         })
         test('does not render input box', () => {
-
+            const inputBox = findByTestAttr(wrapper, 'input-box')
+            expect(inputBox.length).not.toBe(1)
         })
         test('does not render submit button', () => {
-            
+            const submitButtom = findByTestAttr(wrapper, 'submit-buttom')
+            expect(submitButtom.length).not.toBe(1)
         })
     })
 })
@@ -55,6 +67,3 @@ describe('render', () => {
 describe('update state', () => {
 
 })
-
-
-
