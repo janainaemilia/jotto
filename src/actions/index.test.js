@@ -1,0 +1,9 @@
+import { correctGuess, actionTypes } from './index'
+
+describe('correctGuess', () => {
+    test('return an action with type `CORRECT_GUESS`', () => {
+        const action = correctGuess()
+        //when we compare objects, we must use toEqual
+        expect(action).toEqual({ type: actionTypes.CORRET_GUESS })
+    })
+})
