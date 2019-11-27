@@ -1,4 +1,5 @@
 import checkPropTypes from 'check-prop-types'
+<<<<<<< HEAD
 import { createStore, applyMiddleware } from 'redux'
 
 import rootReducer from '../src/reducers'
@@ -15,6 +16,8 @@ export const storeFactory = (initialState) => {
     const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
     return createStoreWithMiddleware(rootReducer, initialState)
 }
+=======
+>>>>>>> parent of 4ef7510... Set up Input component and storeFactory test util
 
 /**
  * Return node(s) with the given data-test attribute
